@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>D3 Dependency Injection</title>
+
+        <!-- stylesheets -->
+        <link href="css/style.css" type="text/css" />
+    </head>
+
+    <body ng-app="d3App">
+
+        <div ng-controller="d3Controller as ctrl">
+
+            <span ng-show="title">{{title}}</span>
+            <d3-lines></d3-lines>
+
+        </div>
+
+        <!-- Javascript -->
+        <script src="js/vendor/angular.js"           ></script>
+        <script src="js/app.js"                      ></script>
+        <script src="js/d3module.js"                 ></script>
+        <script src="js/controllers/d3controller.js" ></script>
+        <script src="js/directives/d3directive.js"   ></script>
+    </body>
+
+</html>
+
