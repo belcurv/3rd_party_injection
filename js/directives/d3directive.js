@@ -17,12 +17,14 @@
                         height = 500,
                         margin = 45,
                     
-                        // creating a div to contain line charts.
-                        div = d3.select('body').append('div'),
+                        // create a div to contain line charts.
+                        div = d3.select('body')
+                            .append('div'),
                         svg = div.append('svg:svg')
                             .attr('width', width)
                             .attr('height', height)
                             .style('background-color', '#eee');
+                    
                     // on window resize, re-render d3 canvas
                     window.onresize = function () {
                         return scope.$apply();
@@ -32,41 +34,42 @@
                     }, function () {
                         return scope.render(scope.data);
                     });
+                    
                     // define render function
                     scope.render = function (d) {
                         // remove all previous items before render
                         svg.selectAll("*").remove();
                         // setup variables
-                        var y = d3
-                            .scale
-                            .linear()
+                        var y = d3.scale.linear()
                             .domain([0, d3.max(data)])
                             .range([0 + margin, height - margin]),
-                            x = d3
-                            .scale
-                            .linear()
+                            
+                            x = d3.scale.linear()
                             .domain([0, data.length])
                             .range([0 + margin, width - margin]),
-                            g = svg
-                            .append("svg:g")
+                            
+                            g = svg.append("svg:g")
                             .style('stroke', '#fff')
                             .style('fill', 'none'),
-                            lineGraph = d3.svg.line()
-                            .interpolate("monotone")
+                            
+                            lineGraph = d3.svg.line().interpolate("monotone")
                             .x(function (d, i) {
                                 return x(i);
                             })
                             .y(function (d) {
                                 return height - y(d);
                             });
+                        
                         // draw the y axis
                         g.append("svg:line")
                             .attr("x1", x(0)).attr("y1", y(0))
                             .attr("x2", x(0)).attr("y2", y(d3.max(data)));
+                        
                         // draw the x axis
                         g.append("svg:line")
                             .attr("x1", x(0)).attr("y1", height - y(0))
                             .attr("x2", width - margin).attr("y2", height - y(0));
+                        
                         // x-axis label
                         g.selectAll(".xLabel").data(x.ticks(5)).enter()
                             .append("svg:text").attr("class", "xLabel")
@@ -85,6 +88,7 @@
                             }).attr("text-anchor", "end")
                             .style('stroke-width', 0)
                             .style('fill', '#000');
+                        
                         // x axis ticks
                         g.selectAll(".xTicks").data(x.ticks(10)).enter()
                             .append("svg:line").attr("class", "xTicks")
