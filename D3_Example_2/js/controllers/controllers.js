@@ -1,4 +1,4 @@
-(function() {
+(function () {
     
     'use strict';
     
@@ -7,8 +7,7 @@
         .controller('mainController', ['$scope', '$http', function ($scope, $http) {
 
             // initialize variables
-            var humanReadableDate,
-                reformatGithubResponse,
+            var reformatGithubResponse,
                 date, date0, dateN, days, curDay,
                 uniqueAuthors,
                 authorMap,
@@ -21,9 +20,9 @@
             $scope.repo = 'csv_parse';
             
             // helper for formatting date
-            humanReadableDate = function (d) {
+            function humanReadableDate(d) {
                 return d.getUTCMonth() + 1 + '/' + d.getUTCDate();
-            };
+            }
             
             // helper for reformatting the Github API response into a form we can pass to D3
             reformatGithubResponse = function (data) {
