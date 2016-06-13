@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+        <title>D3 Example 2</title>
+
+        <!-- stylesheets -->
+        <link rel="stylesheet" href="css/style.css" type="text/css" />
+    </head>
+
+    <body ng-controller="mainController">
+
+
+        <h1>{{title}}</h1>
+        
+        <form ng-submit="getCommitData()">
+            User: <input ng-model="user" />
+            Repo: <input ng-model="repo" />
+            <input type="submit" value="Get Data" />
+            Grouped <input type="checkbox" ng-model="grouped" />
+        </form>
+
+        <p class="error">{{error}}</p>
+        <!-- Here's where our visualization will go -->
+        <gh-visualization val="data" grouped="grouped"></gh-visualization>
+
+        <!-- Javascript -->
+        <script src="js/vendor/angular.min.js"       ></script>
+        <script src="js/app.js"                      ></script>
+        <script src="js/services/d3.js"              ></script>
+        <script src="js/controllers/controllers.js"  ></script>
+        <script src="js/directives/d3directive.js"   ></script>
+    </body>
+
+</html>
+
